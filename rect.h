@@ -20,8 +20,7 @@ enum RectFlags {
         FUNCTION_SUCCESS,
         RECT_INIT_ERROR,
         RECT_INVALID_ERROR,
-        RECT_DESTROY_ERROR,
-        RECT_INVALID_DIRECTION_ERROR
+        RECT_DESTROY_ERROR
 };
 
 typedef struct Rectangle {

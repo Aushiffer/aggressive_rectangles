@@ -19,6 +19,11 @@ Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned 
         rect->width = width;
         rect->controller = init_joystick();
 
+        if (!rect->controller) {
+                fprintf(stderr, "[-] init_rectangle(): falha na inicializacao do joystick\n");
+                exit(RECT_INIT_ERROR);
+        }
+
         return rect;
 }
 
@@ -55,9 +60,6 @@ void mv_rectangle(Rectangle *rect, char instance_steps, unsigned char traject, u
                 /* Baixo */
                 if ((rect->init_y + instance_steps * STEPS) + rect->height / 2 <= max_y)
                         rect->init_y = rect->init_y + instance_steps * STEPS;
-        } else {
-                fprintf(stderr, "[-] mv_rectangle: direcao invalida\n");
-                exit(RECT_INVALID_DIRECTION_ERROR);
         }
 }
 
