@@ -5,11 +5,16 @@
 - Linux x86_64.
 
 ## Dependências
-- GCC 12+: sudo apt install gcc (Debian e derivados)
+- GCC 12+: sudo apt install gcc (Debian e derivados, talvez seja diferente para a sua distribuição Linux)
+- Make: sudo apt install make (Debian e derivados, talvez seja diferente para a sua distribuição Linux)
 - Allegro: https://github.com/liballeg/allegro_wiki/wiki/Quickstart
 
 ## Clonando, compilando e executando
 - git clone https://github.com/Aushiffer/agressive_rectangles.git
 - cd aggresive_rectangles/
-- gcc *.c -o aggressive_rectangles $(pkg-config allegro-5 allegro_main-5 allegro_primitives-5 --libs --cflags)
+- make
 - ./aggressive_rectangles
+
+## Limpando arquivos de compilação
+- make clean (limpa apenas os arquivos-objeto (*.o))
+- make purge (limpa todos os arquivos de compilação, incluindo o executável)
