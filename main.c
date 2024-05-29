@@ -1,4 +1,3 @@
-#include "joystick.h"
 #include "rect.h"
 
 #define WINDOW_H 500
