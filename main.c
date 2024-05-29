@@ -1,7 +1,7 @@
 #include "rect.h"
 
-#define WINDOW_H 500
-#define WINDOW_W 500
+#define WINDOW_H 800
+#define WINDOW_W 800
 
 int main(void) {
         al_init();
