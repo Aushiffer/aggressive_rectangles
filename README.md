@@ -4,6 +4,10 @@
 ## Plataformas suportadas
 - Linux x86_64.
 
+# Dependências
+- GCC 12+: sudo apt install gcc (Debian e derivados)
+- Allegro: https://github.com/liballeg/allegro_wiki/wiki/Quickstart
+
 ## Clonando, compilando e executando
 - git clone https://github.com/Aushiffer/agressive_rectangles.git
 - cd aggresive_rectangles/
