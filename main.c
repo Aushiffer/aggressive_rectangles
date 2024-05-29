@@ -30,11 +30,11 @@ int main(void) {
                 al_wait_for_event(ev_queue, &ev);
 
                 if (ev.type == ALLEGRO_EVENT_TIMER) {
+                        update_pos(rect1, rect2, WINDOW_W, WINDOW_H);
                         al_clear_to_color(al_map_rgb(255, 255, 255));
                         al_draw_filled_rectangle(rect1->init_x - (float)rect1->width / 2, rect1->init_y - (float)rect1->height / 2, rect1->init_x + (float)rect1->width / 2, rect1->init_y + (float)rect1->height / 2, al_map_rgb(0, 0, 0));
                         al_draw_filled_rectangle(rect2->init_x - (float)rect2->width / 2, rect2->init_y - (float)rect2->height / 2, rect2->init_x + (float)rect2->width / 2, rect2->init_y + (float)rect2->height / 2, al_map_rgb(0, 255, 0));
                         al_flip_display();
-                        update_pos(rect1, rect2, WINDOW_W, WINDOW_H);
                 } else if (ev.type == ALLEGRO_EVENT_KEY_DOWN || ev.type == ALLEGRO_EVENT_KEY_UP) {                        
                         switch (ev.keyboard.keycode) {
                                 case ALLEGRO_KEY_A:
