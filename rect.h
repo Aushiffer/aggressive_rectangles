@@ -38,8 +38,8 @@ Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned 
 /* Verifica se ocorreu colisão entre os retângulos */
 unsigned char collision(Rectangle *rect1, Rectangle *rect2);
 
-/* Move o retângulo 'steps' passos, em 'traject' direção */
-void mv_rectangle(Rectangle *rect, char steps, unsigned char traject, unsigned short max_x, unsigned short max_y);
+/* Move o retângulo 'instance_steps' passos, em 'traject' direção */
+void mv_rectangle(Rectangle *rect, char instance_steps, unsigned char traject, unsigned short max_x, unsigned short max_y);
 
 /* Atualiza as coordenadas do retângulo, verificando colisões */
 void update_pos(Rectangle *rect1, Rectangle *rect2, unsigned short max_x, unsigned short max_y);
