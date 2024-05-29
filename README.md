@@ -4,7 +4,7 @@
 ## Plataformas suportadas
 - Linux x86_64.
 
-# Dependências
+## Dependências
 - GCC 12+: sudo apt install gcc (Debian e derivados)
 - Allegro: https://github.com/liballeg/allegro_wiki/wiki/Quickstart
 
