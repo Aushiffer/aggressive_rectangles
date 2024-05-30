@@ -1,8 +1,8 @@
 #include "joystick.h"
 #include "rect.h"
 
-#define WINDOW_H 480
 #define WINDOW_W 640
+#define WINDOW_H 480
 
 int main(void) {
         al_init();
