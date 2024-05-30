@@ -1,5 +1,6 @@
 # aggressive_rectangles
 - Joguinho simples feito em C com a biblioteca Allegro, na disciplina de Programação 2 (ainda em desenvolvimento).
+- Baseado no "Aggressive Squares" do Prof. Vinicius Fülber-Garcia, feito para se aprender a programar com a biblioteca Allegro.
 
 ## Plataformas suportadas
 - Linux x86_64.
