@@ -17,6 +17,7 @@ Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned 
         rect->init_y = init_y;
         rect->height = height;
         rect->width = width;
+        rect->health_points = MAX_HEALTH_POINTS;
         rect->controller = init_joystick();
 
         if (!rect->controller) {

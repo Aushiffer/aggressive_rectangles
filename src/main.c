@@ -21,7 +21,7 @@ int main(void) {
 
         Rectangle *rect1 = init_rectangle(30, 50, 25, WINDOW_H / 2, WINDOW_W, WINDOW_H);
         Rectangle *rect2 = init_rectangle(30, 50, WINDOW_W - 25, WINDOW_H / 2, WINDOW_W, WINDOW_H);
-
+        
         if (!rect1 || !rect2) {
                 fprintf(stderr, "[-] main(): ocorreu a invalidez de algum dos retangulos\n");
                 exit(RECT_INVALID_ERROR);

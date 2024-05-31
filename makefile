@@ -8,14 +8,14 @@ all: $(PROGRAM)
 $(PROGRAM): main.o rect.o joystick.o
 	$(CC) -o $(PROGRAM) main.o rect.o joystick.o $(CCFLAGS) $(ALLEGRO_LIBS)
 
-main.o: main.c
-	$(CC) -c main.c $(CCFLAGS) $(ALLEGRO_LIBS)
+main.o: src/main.c
+	$(CC) -c src/main.c $(CCFLAGS) $(ALLEGRO_LIBS)
 
-rect.o: rect.c
-	$(CC) -c rect.c $(CCFLAGS) $(ALLEGRO_LIBS)
+rect.o: src/rect.c
+	$(CC) -c src/rect.c $(CCFLAGS) $(ALLEGRO_LIBS)
 
-joystick.o: joystick.c
-	$(CC) -c joystick.c $(CCFLAGS)
+joystick.o: src/joystick.c
+	$(CC) -c src/joystick.c $(CCFLAGS)
 
 clear:
 	rm -f *.o
