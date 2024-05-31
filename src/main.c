@@ -10,7 +10,7 @@ int main(void) {
         al_install_keyboard();
 
         ALLEGRO_DISPLAY *display = al_create_display(WINDOW_W, WINDOW_H);
-        ALLEGRO_TIMER *timer = al_create_timer(1.0 / 60.0);
+        ALLEGRO_TIMER *timer = al_create_timer(1.0 / 30.0);
         ALLEGRO_EVENT_QUEUE *ev_queue = al_create_event_queue();
         ALLEGRO_EVENT ev;
 
@@ -36,25 +36,29 @@ int main(void) {
                         al_draw_filled_rectangle(rect1->init_x - (float)rect1->width / 2, rect1->init_y - (float)rect1->height / 2, rect1->init_x + (float)rect1->width / 2, rect1->init_y + (float)rect1->height / 2, al_map_rgb(0, 0, 0));
                         al_draw_filled_rectangle(rect2->init_x - (float)rect2->width / 2, rect2->init_y - (float)rect2->height / 2, rect2->init_x + (float)rect2->width / 2, rect2->init_y + (float)rect2->height / 2, al_map_rgb(0, 255, 0));
                         al_flip_display();
-                } else if (ev.type == ALLEGRO_EVENT_KEY_DOWN || ev.type == ALLEGRO_EVENT_KEY_UP) {                        
+                } else if (ev.type == ALLEGRO_EVENT_KEY_DOWN || ev.type == ALLEGRO_EVENT_KEY_UP) {
                         switch (ev.keyboard.keycode) {
                                 case ALLEGRO_KEY_A:
                                 mv_joystick_left(rect1->controller);
+                                printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
 
                                 break;
 
                                 case ALLEGRO_KEY_D:
                                 mv_joystick_right(rect1->controller);
+                                printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
 
                                 break;
 
                                 case ALLEGRO_KEY_W:
                                 mv_joystick_up(rect1->controller);
+                                printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
 
                                 break;
 
                                 case ALLEGRO_KEY_S:
                                 mv_joystick_down(rect1->controller);
+                                printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
 
                                 break;
                         }
@@ -62,21 +66,25 @@ int main(void) {
                         switch (ev.keyboard.keycode) {
                                 case ALLEGRO_KEY_LEFT:
                                 mv_joystick_left(rect2->controller);
+                                printf("P2 -> L: %d R: %d U: %d D: %d\n", rect2->controller->left, rect2->controller->right, rect2->controller->up, rect2->controller->down);
 
                                 break;
 
                                 case ALLEGRO_KEY_RIGHT:
                                 mv_joystick_right(rect2->controller);
+                                printf("P2 -> L: %d R: %d U: %d D: %d\n", rect2->controller->left, rect2->controller->right, rect2->controller->up, rect2->controller->down);
 
                                 break;
 
                                 case ALLEGRO_KEY_UP:
                                 mv_joystick_up(rect2->controller);
+                                printf("P2 -> L: %d R: %d U: %d D: %d\n", rect2->controller->left, rect2->controller->right, rect2->controller->up, rect2->controller->down);
 
                                 break;
 
                                 case ALLEGRO_KEY_DOWN:
                                 mv_joystick_down(rect2->controller);
+                                printf("P2 -> L: %d R: %d U: %d D: %d\n", rect2->controller->left, rect2->controller->right, rect2->controller->up, rect2->controller->down);
 
                                 break;
                         }

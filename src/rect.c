@@ -34,9 +34,9 @@ unsigned char collision_rect(Rectangle *rect1, Rectangle *rect2) {
         && (((rect1->init_y + rect1->height / 2 >= rect2->init_y - rect2->height / 2) && (rect2->init_y - rect2->height / 2 >= rect1->init_y - rect1->height / 2)) 
         || ((rect2->init_y + rect2->height / 2 >= rect1->init_y - rect1->height / 2) && (rect1->init_y - rect1->height / 2 >= rect2->init_y - rect2->height / 2)))) {
                 return 1;
-        } else {
-                return 0;
         }
+
+        return 0;
 }
 
 void mv_rectangle(Rectangle *rect, char instance_steps, unsigned char traject, unsigned short max_x, unsigned short max_y) {

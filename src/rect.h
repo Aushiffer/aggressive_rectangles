@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "joystick.h"
 
-enum Directions {
+enum RectDirections {
         LEFT,
         RIGHT,
         UP,
