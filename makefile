@@ -5,8 +5,8 @@ PROGRAM = aggressive_rectangles
 
 all: $(PROGRAM)
 
-$(PROGRAM): main.o rect.o joystick.o
-	$(CC) -o $(PROGRAM) main.o rect.o joystick.o $(CCFLAGS) $(ALLEGRO_LIBS)
+$(PROGRAM): main.o rect.o joystick.o fireball.o
+	$(CC) -o $(PROGRAM) main.o rect.o joystick.o fireball.o $(CCFLAGS) $(ALLEGRO_LIBS)
 
 main.o: src/main.c
 	$(CC) -c src/main.c $(CCFLAGS) $(ALLEGRO_LIBS)
@@ -16,6 +16,9 @@ rect.o: src/rect.c
 
 joystick.o: src/joystick.c
 	$(CC) -c src/joystick.c $(CCFLAGS)
+
+fireball.o: src/fireball.c
+	$(CC) -c src/fireball.c $(CCFLAGS)
 
 clear:
 	rm -f *.o

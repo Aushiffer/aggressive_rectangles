@@ -18,8 +18,6 @@ Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned 
         rect->height = height;
         rect->width = width;
         rect->health_points = MAX_HEALTH_POINTS;
-        rect->shoot_side = SHOOT_SIDE;
-        rect->move_shoot = 0;
         rect->controller = init_joystick();
 
         if (!rect->controller) {
@@ -30,7 +28,7 @@ Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned 
         return rect;
 }
 
-unsigned char collision(Rectangle *rect1, Rectangle *rect2) {
+unsigned char collision_rect(Rectangle *rect1, Rectangle *rect2) {
         if ((((rect1->init_x + rect1->width / 2 >= rect2->init_x - rect2->width / 2) && (rect2->init_x - rect2->width / 2 >= rect1->init_x - rect1->width / 2)) 
         || ((rect2->init_x + rect2->width / 2 >= rect1->init_x - rect1->width / 2) && (rect1->init_x - rect1->width / 2 >= rect2->init_x - rect2->width / 2))) 
         && (((rect1->init_y + rect1->height / 2 >= rect2->init_y - rect2->height / 2) && (rect2->init_y - rect2->height / 2 >= rect1->init_y - rect1->height / 2)) 
@@ -75,44 +73,44 @@ void update_pos(Rectangle *rect1, Rectangle *rect2, unsigned short max_x, unsign
         if (rect1->controller->left == 1) {
                 mv_rectangle(rect1, 1, LEFT, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect1, -1, LEFT, max_x, max_y);
         } else if (rect1->controller->right == 1) {
                 mv_rectangle(rect1, 1, RIGHT, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect1, -1, RIGHT, max_x, max_y);
         } else if (rect1->controller->up == 1) {
                 mv_rectangle(rect1, 1, UP, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect1, -1, UP, max_x, max_y);
         } else if (rect1->controller->down == 1) {
                 mv_rectangle(rect1, 1, DOWN, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect1, -1, DOWN, max_x, max_y);
         }
 
         if (rect2->controller->left == 1) {
                 mv_rectangle(rect2, 1, LEFT, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect2, -1, LEFT, max_x, max_y);
         } else if (rect2->controller->right == 1) {
                 mv_rectangle(rect2, 1, RIGHT, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect2, -1, RIGHT, max_x, max_y);
         } else if (rect2->controller->up == 1) {
                 mv_rectangle(rect2, 1, UP, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect2, -1, UP, max_x, max_y);
         } else if (rect2->controller->down == 1) {
                 mv_rectangle(rect2, 1, DOWN, max_x, max_y);
 
-                if (collision(rect1, rect2))
+                if (collision_rect(rect1, rect2))
                         mv_rectangle(rect2, -1, DOWN, max_x, max_y);
         }
 }

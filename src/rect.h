@@ -22,8 +22,7 @@ enum RectFlags {
         FUNCTION_SUCCESS,
         RECT_INIT_ERROR,
         RECT_INVALID_ERROR,
-        RECT_DESTROY_ERROR,
-        BORDER_COLLISION
+        RECT_DESTROY_ERROR
 };
 
 typedef struct Rectangle {
@@ -31,9 +30,7 @@ typedef struct Rectangle {
         unsigned short width;
         unsigned short init_x;
         unsigned short init_y;
-        unsigned short shoot_side;
         unsigned short health_points;
-        unsigned char move_shoot;
         Joystick *controller;
 } Rectangle;
 
@@ -41,13 +38,10 @@ typedef struct Rectangle {
 Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned short init_x, unsigned short init_y, unsigned short max_x, unsigned short max_y);
 
 /* Verifica se ocorreu colisão entre os retângulos */
-unsigned char collision(Rectangle *rect1, Rectangle *rect2);
+unsigned char collision_rect(Rectangle *rect1, Rectangle *rect2);
 
 /* Move o retângulo 'instance_steps' passos, em 'traject' direção */
 void mv_rectangle(Rectangle *rect, char instance_steps, unsigned char traject, unsigned short max_x, unsigned short max_y);
-
-/* Dispara um quadrado de um retângulo */
-void shoot(Rectangle *rect, unsigned short max_x, unsigned short max_y);
 
 /* Atualiza as coordenadas do retângulo, verificando colisões */
 void update_pos(Rectangle *rect1, Rectangle *rect2, unsigned short max_x, unsigned short max_y);
