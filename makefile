@@ -12,7 +12,7 @@ main.o: src/main.c
 	$(CC) -c src/main.c $(CCFLAGS) $(ALLEGRO_LIBS)
 
 rect.o: src/rect.c
-	$(CC) -c src/rect.c $(CCFLAGS) $(ALLEGRO_LIBS)
+	$(CC) -c src/rect.c $(CCFLAGS)
 
 joystick.o: src/joystick.c
 	$(CC) -c src/joystick.c $(CCFLAGS)
