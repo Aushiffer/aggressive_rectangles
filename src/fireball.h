@@ -31,4 +31,7 @@ unsigned char collision_rect_fireball(Rectangle *rect, Fireball *fireball);
 /* Indica a direção do disparo */
 void mv_fireball(Fireball *fireball, unsigned char direction);
 
+/* Destrói o disparo */
+unsigned char destroy_fireball(Fireball *fireball);
+
 #endif // __FIREBALL__
