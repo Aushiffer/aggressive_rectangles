@@ -2,7 +2,6 @@
 #define __RECT__
 
 #define STEPS 10
-#define SHOOT_STEPS 15
 #define MAX_HEALTH_POINTS 100
 #define SHOOT_SIDE 10
 
@@ -33,9 +32,8 @@ typedef struct Rectangle {
         unsigned short init_x;
         unsigned short init_y;
         unsigned short shoot_side;
-        unsigned short shoot_init_x;
-        unsigned short shoot_init_y;
         unsigned short health_points;
+        unsigned char move_shoot;
         Joystick *controller;
 } Rectangle;
 

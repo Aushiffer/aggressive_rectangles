@@ -18,6 +18,8 @@ Rectangle *init_rectangle(unsigned short height, unsigned short width, unsigned 
         rect->height = height;
         rect->width = width;
         rect->health_points = MAX_HEALTH_POINTS;
+        rect->shoot_side = SHOOT_SIDE;
+        rect->move_shoot = 0;
         rect->controller = init_joystick();
 
         if (!rect->controller) {

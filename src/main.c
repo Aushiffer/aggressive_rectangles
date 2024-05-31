@@ -21,6 +21,7 @@ int main(void) {
 
         Rectangle *rect1 = init_rectangle(30, 50, 25, WINDOW_H / 2, WINDOW_W, WINDOW_H);
         Rectangle *rect2 = init_rectangle(30, 50, WINDOW_W - 25, WINDOW_H / 2, WINDOW_W, WINDOW_H);
+        Rectangle *fireball = init_rectangle(SHOOT_SIDE, SHOOT_SIDE, rect1->init_x, rect1->init_y, WINDOW_W, WINDOW_H);
         
         if (!rect1 || !rect2) {
                 fprintf(stderr, "[-] main(): ocorreu a invalidez de algum dos retangulos\n");
@@ -32,7 +33,13 @@ int main(void) {
 
                 if (ev.type == ALLEGRO_EVENT_TIMER) {
                         update_pos(rect1, rect2, WINDOW_W, WINDOW_H);
+
+                        if (fireball->move_shoot)
+                                mv_rectangle(fireball, 1, RIGHT, WINDOW_W, WINDOW_H);
+
+                        update_pos(fireball, rect2, WINDOW_W, WINDOW_H);
                         al_clear_to_color(al_map_rgb(255, 255, 255));
+                        al_draw_filled_rectangle(fireball->init_x - (float)fireball->width / 2, fireball->init_y - (float)fireball->height / 2, fireball->init_x + (float)fireball->width / 2, fireball->init_y + (float)fireball->height / 2, al_map_rgb(255, 0, 0));
                         al_draw_filled_rectangle(rect1->init_x - (float)rect1->width / 2, rect1->init_y - (float)rect1->height / 2, rect1->init_x + (float)rect1->width / 2, rect1->init_y + (float)rect1->height / 2, al_map_rgb(0, 0, 0));
                         al_draw_filled_rectangle(rect2->init_x - (float)rect2->width / 2, rect2->init_y - (float)rect2->height / 2, rect2->init_x + (float)rect2->width / 2, rect2->init_y + (float)rect2->height / 2, al_map_rgb(0, 255, 0));
                         al_flip_display();
@@ -45,6 +52,7 @@ int main(void) {
 
                                 case ALLEGRO_KEY_D:
                                 mv_joystick_right(rect1->controller);
+                                fireball->move_shoot = 1;
 
                                 break;
 
