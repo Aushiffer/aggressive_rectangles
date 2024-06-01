@@ -11,7 +11,7 @@ int main(void) {
         al_install_keyboard();
 
         ALLEGRO_DISPLAY *display = al_create_display(WINDOW_W, WINDOW_H);
-        ALLEGRO_TIMER *timer = al_create_timer(1.0 / 30.0);
+        ALLEGRO_TIMER *timer = al_create_timer(1.0 / 60.0);
         ALLEGRO_EVENT_QUEUE *ev_queue = al_create_event_queue();
         ALLEGRO_EVENT ev;
 
@@ -39,7 +39,10 @@ int main(void) {
                         if (mv_fireball(fireball1, rect1, rect2, WINDOW_W, WINDOW_H) != 1) {
                                 al_draw_filled_rectangle(fireball1->init_x - (float)fireball1->side / 2, fireball1->init_y - (float)fireball1->side / 2, fireball1->init_x + (float)fireball1->side / 2, fireball1->init_y + (float)fireball1->side / 2, al_map_rgb(255, 0, 0));
                         } else if (mv_fireball(fireball1, rect1, rect2, WINDOW_W, WINDOW_H) == 0) {
+                                fireball1->left = 0;
                                 fireball1->right = 0;
+                                fireball1->up = 0;
+                                fireball1->down = 0;
                                 al_draw_filled_rectangle(fireball1->init_x - (float)fireball1->side / 2, fireball1->init_y - (float)fireball1->side / 2, fireball1->init_x + (float)fireball1->side / 2, fireball1->init_y + (float)fireball1->side / 2, al_map_rgb(255, 0, 0));
                         }
 
@@ -51,6 +54,7 @@ int main(void) {
                                 case ALLEGRO_KEY_A:
                                 mv_joystick_left(rect1->controller);
                                 printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
+                                fireball1->left += 1;
 
                                 break;
 
@@ -64,12 +68,14 @@ int main(void) {
                                 case ALLEGRO_KEY_W:
                                 mv_joystick_up(rect1->controller);
                                 printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
+                                fireball1->up += 1;
 
                                 break;
 
                                 case ALLEGRO_KEY_S:
                                 mv_joystick_down(rect1->controller);
                                 printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
+                                fireball1->down += 1;
 
                                 break;
                         }
