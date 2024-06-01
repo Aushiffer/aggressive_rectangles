@@ -1,5 +1,6 @@
 #include "joystick.h"
 #include "rect.h"
+#include "fireball.h"
 
 #define WINDOW_W 640
 #define WINDOW_H 480
@@ -21,9 +22,10 @@ int main(void) {
 
         Rectangle *rect1 = init_rectangle(30, 50, 25, WINDOW_H / 2, WINDOW_W, WINDOW_H);
         Rectangle *rect2 = init_rectangle(30, 50, WINDOW_W - 25, WINDOW_H / 2, WINDOW_W, WINDOW_H);
+        Fireball *fireball1 = init_fireball(FIREBALL_SIDE, rect1->init_x, rect1->init_y, WINDOW_W, WINDOW_H);
         
-        if (!rect1 || !rect2) {
-                fprintf(stderr, "[-] main(): ocorreu a invalidez de algum dos retangulos\n");
+        if (!rect1 || !rect2 || !fireball1) {
+                fprintf(stderr, "[-] main(): ocorreu a invalidez de alguma entidade\n");
                 exit(RECT_INVALID_ERROR);
         }
 
@@ -33,6 +35,14 @@ int main(void) {
                 if (ev.type == ALLEGRO_EVENT_TIMER) {
                         update_pos(rect1, rect2, WINDOW_W, WINDOW_H);
                         al_clear_to_color(al_map_rgb(255, 255, 255));
+                        
+                        if (mv_fireball(fireball1, rect1, rect2, WINDOW_W, WINDOW_H) != 1) {
+                                al_draw_filled_rectangle(fireball1->init_x - (float)fireball1->side / 2, fireball1->init_y - (float)fireball1->side / 2, fireball1->init_x + (float)fireball1->side / 2, fireball1->init_y + (float)fireball1->side / 2, al_map_rgb(255, 0, 0));
+                        } else if (mv_fireball(fireball1, rect1, rect2, WINDOW_W, WINDOW_H) == 0) {
+                                fireball1->right = 0;
+                                al_draw_filled_rectangle(fireball1->init_x - (float)fireball1->side / 2, fireball1->init_y - (float)fireball1->side / 2, fireball1->init_x + (float)fireball1->side / 2, fireball1->init_y + (float)fireball1->side / 2, al_map_rgb(255, 0, 0));
+                        }
+
                         al_draw_filled_rectangle(rect1->init_x - (float)rect1->width / 2, rect1->init_y - (float)rect1->height / 2, rect1->init_x + (float)rect1->width / 2, rect1->init_y + (float)rect1->height / 2, al_map_rgb(0, 0, 0));
                         al_draw_filled_rectangle(rect2->init_x - (float)rect2->width / 2, rect2->init_y - (float)rect2->height / 2, rect2->init_x + (float)rect2->width / 2, rect2->init_y + (float)rect2->height / 2, al_map_rgb(0, 255, 0));
                         al_flip_display();
@@ -47,6 +57,7 @@ int main(void) {
                                 case ALLEGRO_KEY_D:
                                 mv_joystick_right(rect1->controller);
                                 printf("P1 -> L: %d R: %d U: %d D: %d\n", rect1->controller->left, rect1->controller->right, rect1->controller->up, rect1->controller->down);
+                                fireball1->right += 1;
 
                                 break;
 

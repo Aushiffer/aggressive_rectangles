@@ -3,7 +3,6 @@
 
 #define STEPS 10
 #define MAX_HEALTH_POINTS 100
-#define SHOOT_SIDE 10
 
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_primitives.h>
