@@ -11,8 +11,8 @@
 - Allegro: https://github.com/liballeg/allegro_wiki/wiki/Quickstart
 
 ## Clonando, compilando e executando
-- git clone https://github.com/Aushiffer/agressive_rectangles.git
-- cd aggresive_rectangles/
+- git clone https://github.com/Aushiffer/aggressive_rectangles.git
+- cd aggressive_rectangles/
 - make
 - ./aggressive_rectangles
 
