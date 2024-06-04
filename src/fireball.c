@@ -86,3 +86,15 @@ unsigned char mv_fireball(Fireball *fireball, Rectangle *rect1, Rectangle *rect2
 
         return 0;
 }
+
+unsigned char destroy_fireball(Fireball *fireball) {
+        if (fireball) {
+                free(fireball);
+                fireball = NULL;
+
+                return FIREBALL_FUNC_SUCCESS;
+        }
+
+        fprintf(stderr, "[-] destroy_fireball(): erro no destrutor do disparo\n");
+        exit(FIREBALL_DESTROY_ERROR);
+}

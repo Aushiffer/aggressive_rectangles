@@ -19,8 +19,7 @@ enum FireballFlags {
         FIREBALL_FUNC_SUCCESS,
         FIREBALL_INIT_ERROR,
         FIREBALL_DESTROY_ERROR,
-        FIREBALL_INVALID_ERROR,
-        FIREBALL_COLLIDE
+        FIREBALL_INVALID_ERROR
 };
 
 typedef struct Fireball {
