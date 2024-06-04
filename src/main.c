@@ -28,7 +28,7 @@ int main(void) {
                 fprintf(stderr, "[-] main(): ocorreu a invalidez de alguma entidade\n");
                 exit(RECT_INVALID_ERROR);
         }
-
+        
         while (1) {
                 al_wait_for_event(ev_queue, &ev);
 
