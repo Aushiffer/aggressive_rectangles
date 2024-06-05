@@ -20,6 +20,7 @@ Fireball *init_fireball(unsigned short side, unsigned short init_x, unsigned sho
         fireball->right = 0;
         fireball->down = 0;
         fireball->up = 0;
+        fireball->damage = 10;
 
         return fireball;
 }

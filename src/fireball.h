@@ -30,6 +30,7 @@ typedef struct Fireball {
         unsigned char right;
         unsigned char up;
         unsigned char down;
+        unsigned char damage;
 } Fireball;
 
 /* Cria um disparo */
