@@ -49,39 +49,23 @@ unsigned char mv_fireball(Fireball *fireball, Rectangle *rect1, Rectangle *rect2
         if (fireball->left != 0) {
                 fireball->init_x = fireball->init_x - FIREBALL_STEPS;
 
-                if (collision_rect_fireball(rect2, fireball) || (fireball->init_x - FIREBALL_STEPS) - fireball->side / 2 < 0) {
-                        fireball->init_x = rect1->init_x;
-                        fireball->init_y = rect1->init_y;
-
+                if (collision_rect_fireball(rect2, fireball) || (fireball->init_x - FIREBALL_STEPS) - fireball->side / 2 < 0)
                         return 1;
-                }
         } else if (fireball->right != 0) {
                 fireball->init_x = fireball->init_x + FIREBALL_STEPS;
 
-                if (collision_rect_fireball(rect2, fireball) || (fireball->init_x + FIREBALL_STEPS) + fireball->side / 2 > max_x) {
-                        fireball->init_x = rect1->init_x;
-                        fireball->init_y = rect1->init_y;
-
+                if (collision_rect_fireball(rect2, fireball) || (fireball->init_x + FIREBALL_STEPS) + fireball->side / 2 > max_x)
                         return 1;
-                }
         } else if (fireball->up != 0) {
                 fireball->init_y = fireball->init_y - FIREBALL_STEPS;
 
-                if (collision_rect_fireball(rect2, fireball) || (fireball->init_y - FIREBALL_STEPS) - fireball->side / 2 < 0) {
-                        fireball->init_x = rect1->init_x;
-                        fireball->init_y = rect1->init_y;
-
+                if (collision_rect_fireball(rect2, fireball) || (fireball->init_y - FIREBALL_STEPS) - fireball->side / 2 < 0)
                         return 1;
-                }
         } else if (fireball->down != 0) {
                 fireball->init_y = fireball->init_y + FIREBALL_STEPS;
 
-                if (collision_rect_fireball(rect2, fireball) || (fireball->init_y + FIREBALL_STEPS) + fireball->side / 2 > max_y) {
-                        fireball->init_x = rect1->init_x;
-                        fireball->init_y = rect1->init_y;
-
+                if (collision_rect_fireball(rect2, fireball) || (fireball->init_y + FIREBALL_STEPS) + fireball->side / 2 > max_y)
                         return 1;
-                }
         }
 
         return 0;

@@ -1,4 +1,4 @@
-CCFLAGS = -g -Wall -Werror -pedantic
+CCFLAGS = -g -Wall -pedantic
 CC = gcc
 ALLEGRO_LIBS = -lallegro -lallegro_primitives
 PROGRAM = aggressive_rectangles
