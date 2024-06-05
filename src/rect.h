@@ -4,8 +4,6 @@
 #define STEPS 10
 #define MAX_HEALTH_POINTS 100
 
-#include <allegro5/allegro5.h>
-#include <allegro5/allegro_primitives.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "joystick.h"

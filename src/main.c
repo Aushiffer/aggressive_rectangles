@@ -1,8 +1,8 @@
 #include "joystick.h"
 #include "rect.h"
 #include "fireball.h"
+#include <allegro5/allegro5.h>
 #include <allegro5/allegro_primitives.h>
-#include <allegro5/keycodes.h>
 
 #define WINDOW_W 640
 #define WINDOW_H 480
