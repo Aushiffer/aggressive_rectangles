@@ -6,7 +6,7 @@
 #include "rect.h"
 
 #define FIREBALL_STEPS 15
-#define FIREBALL_SIDE 10
+#define FIREBALL_SIDE 15
 
 enum FireballDirections {
         FIREBALL_LEFT,
