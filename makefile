@@ -20,6 +20,9 @@ joystick.o: src/joystick.c
 fireball.o: src/fireball.c
 	$(CC) -c src/fireball.c $(CCFLAGS)
 
+run:
+	./$(PROGRAM)
+
 clear:
 	rm -f *.o
 
