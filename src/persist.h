@@ -10,7 +10,7 @@ enum PersistFlags {
         PERSIST_DOWN
 };
 
-/* Atualiza as flags de persistência relativas à movimentoção do disparo */
+/* Atualiza as flags de persistência relativas à movimentação do disparo */
 void update_persist(Rectangle *rect1, Rectangle *rect2, unsigned char *persist1, unsigned char *persist2);
 
 #endif // __PERSIST__
