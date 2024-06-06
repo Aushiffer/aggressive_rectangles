@@ -1,18 +1,12 @@
 #include "joystick.h"
 #include "rect.h"
 #include "fireball.h"
+#include "persist.h"
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_primitives.h>
 
 #define WINDOW_W 640
 #define WINDOW_H 480
-
-enum PersistFlags {
-        PERSIST_LEFT = 1,
-        PERSIST_RIGHT,
-        PERSIST_UP,
-        PERSIST_DOWN
-};
 
 int main(void) {
         al_init();
@@ -92,20 +86,7 @@ int main(void) {
                         al_draw_filled_rectangle(rect1->init_x - (float)rect1->width / 2, rect1->init_y - (float)rect1->height / 2, rect1->init_x + (float)rect1->width / 2, rect1->init_y + (float)rect1->height / 2, al_map_rgb(0, 0, 0));
                         al_draw_filled_rectangle(rect2->init_x - (float)rect2->width / 2, rect2->init_y - (float)rect2->height / 2, rect2->init_x + (float)rect2->width / 2, rect2->init_y + (float)rect2->height / 2, al_map_rgb(0, 255, 0));
                         al_flip_display();
-
-                        if (rect1->init_x < rect2->init_x && rect1->init_y == rect2->init_y) {
-                                persist1 = PERSIST_RIGHT;
-                                persist2 = PERSIST_LEFT;
-                        } else if (rect2->init_x < rect1->init_x && rect1->init_y == rect2->init_y) {
-                                persist1 = PERSIST_LEFT;
-                                persist2 = PERSIST_RIGHT;
-                        } else if (rect1->init_y < rect2->init_y && rect1->init_x == rect2->init_x) {
-                                persist1 = PERSIST_DOWN;
-                                persist2 = PERSIST_UP;
-                        } else if (rect2->init_y < rect1->init_y && rect1->init_x == rect2->init_x) {
-                                persist1 = PERSIST_UP;
-                                persist2 = PERSIST_DOWN;
-                        }
+                        update_persist(rect1, rect2, &persist1, &persist2);
                 } else if (ev.type == ALLEGRO_EVENT_KEY_DOWN || ev.type == ALLEGRO_EVENT_KEY_UP) {
                         switch (ev.keyboard.keycode) {
                                 case ALLEGRO_KEY_A:
