@@ -21,7 +21,7 @@ fireball.o: src/fireball.c
 	$(CC) -c src/fireball.c $(CCFLAGS)
 
 run:
-	./$(PROGRAM)
+	make && ./$(PROGRAM)
 
 clear:
 	rm -f *.o

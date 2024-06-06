@@ -13,7 +13,6 @@
 ## Clonando, compilando e executando
 - git clone https://github.com/Aushiffer/aggressive_rectangles.git
 - cd aggressive_rectangles/
-- make
 - make run
 
 ## Limpando arquivos de compilação

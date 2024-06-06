@@ -183,7 +183,7 @@ int main(void) {
                                 }
                         }
 
-                        if (ev.keyboard.keycode == ALLEGRO_KEY_BACKSPACE) {
+                        if (ev.keyboard.keycode == ALLEGRO_KEY_ENTER) {
                                 fire2 = 1;
 
                                 switch (persist2) {
