@@ -3,10 +3,9 @@
 #include "fireball.h"
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_primitives.h>
-#include <allegro5/keycodes.h>
 
-#define WINDOW_W 800
-#define WINDOW_H 800
+#define WINDOW_W 640
+#define WINDOW_H 480
 
 enum PersistFlags {
         PERSIST_LEFT = 1,
@@ -183,7 +182,7 @@ int main(void) {
                                 }
                         }
 
-                        if (ev.keyboard.keycode == ALLEGRO_KEY_ENTER) {
+                        if (ev.keyboard.keycode == ALLEGRO_KEY_BACKSPACE) {
                                 fire2 = 1;
 
                                 switch (persist2) {
