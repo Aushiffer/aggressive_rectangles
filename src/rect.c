@@ -115,6 +115,13 @@ void update_pos(Rectangle *rect1, Rectangle *rect2, unsigned short max_x, unsign
         }
 }
 
+unsigned char is_dead(Rectangle *rect) {
+        if (rect->health_points != 0)
+                return 0;
+
+        return 1;
+}
+
 void update_persist(Rectangle *rect1, Rectangle *rect2, unsigned char *persist1, unsigned char *persist2) {
         if (rect1->init_x < rect2->init_x && rect1->init_y == rect2->init_y) {
                 *persist1 = PERSIST_RIGHT;

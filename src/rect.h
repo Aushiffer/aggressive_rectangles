@@ -34,7 +34,7 @@ typedef struct Rectangle {
         unsigned short width;
         unsigned short init_x;
         unsigned short init_y;
-        unsigned short health_points;
+        unsigned char health_points;
         Joystick *controller;
 } Rectangle;
 
@@ -49,6 +49,9 @@ void mv_rectangle(Rectangle *rect, char instance_steps, unsigned char traject, u
 
 /* Atualiza as coordenadas do retângulo, verificando colisões */
 void update_pos(Rectangle *rect1, Rectangle *rect2, unsigned short max_x, unsigned short max_y);
+
+/* Checa se o retângulo morreu */
+unsigned char is_dead(Rectangle *rect);
 
 /* Atualiza as flags de persistência relativas à movimentação do disparo */
 void update_persist(Rectangle *rect1, Rectangle *rect2, unsigned char *persist1, unsigned char *persist2);

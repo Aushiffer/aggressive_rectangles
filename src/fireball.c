@@ -35,6 +35,8 @@ unsigned char collision_rect_fireball(Rectangle *rect, Fireball *fireball) {
         || ((rect->init_x + rect->width / 2 >= fireball->init_x - fireball->side / 2) && (fireball->init_x - fireball->side / 2 >= rect->init_x - rect->width / 2))) 
         && (((fireball->init_y + fireball->side / 2 >= rect->init_y - rect->height / 2) && (rect->init_y - rect->height / 2 >= fireball->init_y - fireball->side / 2)) 
         || ((rect->init_y + rect->height / 2 >= fireball->init_y - fireball->side / 2) && (fireball->init_y - fireball->side / 2 >= rect->init_y - rect->height / 2)))) {
+                (rect->health_points) -= fireball->damage;
+
                 return 1;
         }
 

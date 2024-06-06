@@ -1,6 +1,6 @@
 CCFLAGS = -g -Wall -pedantic
 CC = gcc
-ALLEGRO_LIBS = -lallegro -lallegro_primitives
+ALLEGRO_LIBS = -lallegro -lallegro_primitives -lallegro_font
 PROGRAM = aggressive_rectangles
 
 all: $(PROGRAM)
