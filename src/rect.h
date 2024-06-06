@@ -22,6 +22,13 @@ enum RectFlags {
         RECT_DESTROY_ERROR
 };
 
+enum PersistFlags {
+        PERSIST_LEFT = 1,
+        PERSIST_RIGHT,
+        PERSIST_UP,
+        PERSIST_DOWN
+};
+
 typedef struct Rectangle {
         unsigned short height;
         unsigned short width;
@@ -42,6 +49,9 @@ void mv_rectangle(Rectangle *rect, char instance_steps, unsigned char traject, u
 
 /* Atualiza as coordenadas do retângulo, verificando colisões */
 void update_pos(Rectangle *rect1, Rectangle *rect2, unsigned short max_x, unsigned short max_y);
+
+/* Atualiza as flags de persistência relativas à movimentação do disparo */
+void update_persist(Rectangle *rect1, Rectangle *rect2, unsigned char *persist1, unsigned char *persist2);
 
 /* Destrói o retângulo */
 unsigned char destroy_rectangle(Rectangle *rect);

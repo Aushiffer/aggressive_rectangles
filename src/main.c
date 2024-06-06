@@ -1,7 +1,6 @@
 #include "joystick.h"
 #include "rect.h"
 #include "fireball.h"
-#include "persist.h"
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_primitives.h>
 
