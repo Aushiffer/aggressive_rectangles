@@ -5,17 +5,21 @@
 ## Plataformas suportadas
 - Linux x86_64.
 
+## Plataformas testadas
+- Debian 12 (bookworm).
+- openSUSE Tumbleweed.
+
 ## Dependências
-- GCC 12+: sudo apt install gcc (Debian e derivados, talvez seja diferente para a sua distribuição Linux)
-- Make: sudo apt install make (Debian e derivados, talvez seja diferente para a sua distribuição Linux)
+- GCC (instale com o gerenciador de pacotes da sua distribuição Linux (e.g. "sudo zypper install gcc" para distribuições openSUSE)).
+- Make (mesma coisa do GCC).
 - Allegro: https://github.com/liballeg/allegro_wiki/wiki/Quickstart
 
 ## Clonando, compilando e executando
 - git clone https://github.com/Aushiffer/aggressive_rectangles.git
 - cd aggressive_rectangles/
-- make (compilar)
-- make run (executar)
+- make (compilar).
+- make run (executar.)
 
 ## Limpando arquivos de compilação
-- make clean (limpa apenas os arquivos-objeto (*.o))
-- make purge (limpa todos os arquivos de compilação, incluindo o executável)
+- make clean (limpa apenas os arquivos-objeto (*.o)).
+- make purge (limpa todos os arquivos de compilação, incluindo o executável).
