@@ -65,13 +65,13 @@ int main(void) {
                         al_clear_to_color(al_map_rgb(255, 255, 255));
 
                         if (rect1_dead && rect2_dead)
-                                al_draw_text(font, al_map_rgb(0, 0, 255), (float)WINDOW_W / 2 - 40, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_LEFT, "EMPATE");
+                                al_draw_text(font, al_map_rgb(0, 0, 255), (float)WINDOW_W / 2, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_CENTER, "EMPATE");
                         else if (rect1_dead)
-                                al_draw_text(font, al_map_rgb(0, 255, 0), (float)WINDOW_W / 2 - 40, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_LEFT, "P2 GANHOU");
+                                al_draw_text(font, al_map_rgb(0, 255, 0), (float)WINDOW_W / 2, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_CENTER, "P2 GANHOU");
                         else if (rect2_dead)
-                                al_draw_text(font, al_map_rgb(0, 0, 0), (float)WINDOW_W / 2 - 40, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_LEFT, "P1 GANHOU");
+                                al_draw_text(font, al_map_rgb(0, 0, 0), (float)WINDOW_W / 2, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_CENTER, "P1 GANHOU");
                         
-                        al_draw_text(font, al_map_rgb(0, 100, 255), (float)WINDOW_W / 2 - 100, (float)WINDOW_H / 2 + 50, ALLEGRO_ALIGN_LEFT, "Pressione ENTER para sair");
+                        al_draw_text(font, al_map_rgb(0, 100, 255), (float)WINDOW_W / 2, (float)WINDOW_H / 2 + 50, ALLEGRO_ALIGN_CENTER, "Pressione ENTER para sair");
                         al_flip_display();
 
                         if (ev.type == ALLEGRO_EVENT_KEY_DOWN && ev.keyboard.keycode == ALLEGRO_KEY_ENTER)
