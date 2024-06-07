@@ -7,6 +7,8 @@
 
 #define WINDOW_W 640
 #define WINDOW_H 480
+#define HP_STR_MAX_LEN 65
+#define HP_STR_ALLOC_ERROR 1
 
 int main(void) {
         al_init();
@@ -39,6 +41,19 @@ int main(void) {
         unsigned char fire1 = 0; /* valor default */
         unsigned char fire2 = 0; /* valor default */
         unsigned char mv_value1, mv_value2;
+        char *hp_text_p1 = (char *)malloc(HP_STR_MAX_LEN * sizeof(char));
+
+        if (!hp_text_p1) {
+                fprintf(stderr, "[-] main(): falha na alocacao de hp_text_p1");
+                exit(HP_STR_ALLOC_ERROR);
+        }
+
+        char *hp_text_p2 = (char *)malloc(HP_STR_MAX_LEN * sizeof(char));
+
+        if (!hp_text_p2) {
+                fprintf(stderr, "[-] main(): falha na alocacao de hp_text_p2");
+                exit(HP_STR_ALLOC_ERROR);
+        }
 
         while (1) {
                 al_wait_for_event(ev_queue, &ev);
@@ -56,7 +71,7 @@ int main(void) {
                         else if (rect2_dead)
                                 al_draw_text(font, al_map_rgb(0, 0, 0), (float)WINDOW_W / 2 - 40, (float)WINDOW_H / 2 - 50, ALLEGRO_ALIGN_LEFT, "P1 GANHOU");
                         
-                        al_draw_text(font, al_map_rgb(0, 0, 0), (float)WINDOW_W / 2 - 100, (float)WINDOW_H / 2 + 50, ALLEGRO_ALIGN_LEFT, "Pressione ENTER para sair");
+                        al_draw_text(font, al_map_rgb(0, 100, 255), (float)WINDOW_W / 2 - 100, (float)WINDOW_H / 2 + 50, ALLEGRO_ALIGN_LEFT, "Pressione ENTER para sair");
                         al_flip_display();
 
                         if (ev.type == ALLEGRO_EVENT_KEY_DOWN && ev.keyboard.keycode == ALLEGRO_KEY_ENTER)
@@ -107,6 +122,10 @@ int main(void) {
 
                                 al_draw_filled_rectangle(rect1->init_x - (float)rect1->width / 2, rect1->init_y - (float)rect1->height / 2, rect1->init_x + (float)rect1->width / 2, rect1->init_y + (float)rect1->height / 2, al_map_rgb(0, 0, 0));
                                 al_draw_filled_rectangle(rect2->init_x - (float)rect2->width / 2, rect2->init_y - (float)rect2->height / 2, rect2->init_x + (float)rect2->width / 2, rect2->init_y + (float)rect2->height / 2, al_map_rgb(0, 255, 0));
+                                sprintf(hp_text_p1, "HP (P1): %d/%d", rect1->health_points, MAX_HEALTH_POINTS);
+                                al_draw_text(font, al_map_rgb(0, 100, 255), 10, 10, ALLEGRO_ALIGN_LEFT, hp_text_p1);
+                                sprintf(hp_text_p2, "HP (P2): %d/%d", rect2->health_points, MAX_HEALTH_POINTS);
+                                al_draw_text(font, al_map_rgb(0, 100, 255), WINDOW_W - 10, 10, ALLEGRO_ALIGN_RIGHT, hp_text_p2);
                                 al_flip_display();
                                 update_persist(rect1, rect2, &persist1, &persist2);
                         } else if (ev.type == ALLEGRO_EVENT_KEY_DOWN || ev.type == ALLEGRO_EVENT_KEY_UP) {
@@ -221,6 +240,8 @@ int main(void) {
                 }
         }
 
+        free(hp_text_p1);
+        free(hp_text_p2);
         destroy_fireball(fireball1);
         destroy_fireball(fireball2);
         destroy_rectangle(rect1);
@@ -230,5 +251,5 @@ int main(void) {
         al_destroy_event_queue(ev_queue);
         al_destroy_font(font);
 
-        return FUNCTION_SUCCESS;
+        return 0;
 }
