@@ -18,7 +18,7 @@
 - git clone https://github.com/Aushiffer/aggressive_rectangles.git
 - cd aggressive_rectangles/
 - make (compilar).
-- make run (executar.)
+- make run (executar).
 
 ## Limpando arquivos de compilação
 - make clean (limpa apenas os arquivos-objeto (*.o)).
