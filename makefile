@@ -2,29 +2,32 @@ CCFLAGS = -g -Wall -pedantic
 CC = gcc
 ALLEGRO_LIBS = -lallegro -lallegro_primitives -lallegro_font
 PROGRAM = aggressive_rectangles
+OBJ = ./obj
+BIN = ./bin
+SRC = ./src
 
-all: $(PROGRAM)
+all: $(BIN)/$(PROGRAM)
 
-$(PROGRAM): main.o rect.o joystick.o fireball.o
-	$(CC) -o $(PROGRAM) main.o rect.o joystick.o fireball.o $(CCFLAGS) $(ALLEGRO_LIBS)
+$(BIN)/$(PROGRAM): $(OBJ)/main.o $(OBJ)/rect.o $(OBJ)/joystick.o $(OBJ)/fireball.o
+	$(CC) -o $(BIN)/$(PROGRAM) $(OBJ)/main.o $(OBJ)/rect.o $(OBJ)/joystick.o $(OBJ)/fireball.o $(CCFLAGS) $(ALLEGRO_LIBS)
 
-main.o: src/main.c
-	$(CC) -c src/main.c $(CCFLAGS) $(ALLEGRO_LIBS)
+$(OBJ)/main.o: $(SRC)/main.c
+	$(CC) -c $(SRC)/main.c -o $(OBJ)/main.o $(CCFLAGS) $(ALLEGRO_LIBS)
 
-rect.o: src/rect.c
-	$(CC) -c src/rect.c $(CCFLAGS)
+$(OBJ)/rect.o: $(SRC)/rect.c $(SRC)/rect.h
+	$(CC) -c $(SRC)/rect.c -o $(OBJ)/rect.o $(CCFLAGS)
 
-joystick.o: src/joystick.c
-	$(CC) -c src/joystick.c $(CCFLAGS)
+$(OBJ)/joystick.o: $(SRC)/joystick.c $(SRC)/joystick.h
+	$(CC) -c $(SRC)/joystick.c -o $(OBJ)/joystick.o $(CCFLAGS)
 
-fireball.o: src/fireball.c
-	$(CC) -c src/fireball.c $(CCFLAGS)
+$(OBJ)/fireball.o: $(SRC)/fireball.c $(SRC)/fireball.h
+	$(CC) -c $(SRC)/fireball.c -o $(OBJ)/fireball.o $(CCFLAGS)
 
 run:
-	./$(PROGRAM)
+	./$(BIN)/$(PROGRAM)
 
 clear:
-	rm -f *.o
+	rm -f $(OBJ)/*.o
 
-purge:
-	rm -f *.ch *.o $(PROGRAM)
+purge: clear
+	rm -f $(BIN)/$(PROGRAM)
